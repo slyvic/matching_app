@@ -6,9 +6,11 @@ import 'package:matching_app/screen/login/login_view.dart';
 import 'package:matching_app/screen/login/terms_agree.dart';
 import 'package:matching_app/screen/main/board_function.dart';
 import 'package:matching_app/screen/main/chat_screen.dart';
+import 'package:matching_app/screen/main/chatting_screen.dart';
 import 'package:matching_app/screen/main/community_screen.dart';
 import 'package:matching_app/screen/main/following_users.dart';
 import 'package:matching_app/screen/main/profile_screen.dart';
+import 'package:matching_app/screen/main/report_screen.dart';
 import 'package:matching_app/screen/main/self_introduction.dart';
 import 'package:matching_app/screen/main/user_profile_screen.dart';
 import 'package:matching_app/screen/register/address_check.dart';
@@ -71,7 +73,9 @@ class MatchingApp extends StatelessWidget {
         '/following_users': (context) => FollowingUser(),
         '/board_function': (context) => BoardFunction(),
         '/chat_screen': (context) => ChatScreen(),
+        '/chatting_screen': (context) => ChattingScreen(),
         '/users_profile_screen': (context) => UsersProfileScreen(),
+        '/report_screen': (context) => ReportScreen(),
       },
     );
   }
