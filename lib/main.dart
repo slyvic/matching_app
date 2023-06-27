@@ -9,9 +9,12 @@ import 'package:matching_app/screen/main/chat_screen.dart';
 import 'package:matching_app/screen/main/chatting_screen.dart';
 import 'package:matching_app/screen/main/community_screen.dart';
 import 'package:matching_app/screen/main/following_users.dart';
+import 'package:matching_app/screen/main/profile_edit_screen.dart';
 import 'package:matching_app/screen/main/profile_screen.dart';
 import 'package:matching_app/screen/main/report_screen.dart';
+import 'package:matching_app/screen/main/report_success.dart';
 import 'package:matching_app/screen/main/self_introduction.dart';
+import 'package:matching_app/screen/main/user_profile_chat.dart';
 import 'package:matching_app/screen/main/user_profile_screen.dart';
 import 'package:matching_app/screen/register/address_check.dart';
 import 'package:matching_app/screen/register/b_day.dart';
@@ -76,6 +79,9 @@ class MatchingApp extends StatelessWidget {
         '/chatting_screen': (context) => ChattingScreen(),
         '/users_profile_screen': (context) => UsersProfileScreen(),
         '/report_screen': (context) => ReportScreen(),
+        '/report_success': (context) => ReportSuccess(),
+        '/user_profile_chat': (context) => UsersProfileChatScreen(),
+        '/profile_edit_screen': (context) => ProfileEditScreen(),
       },
     );
   }

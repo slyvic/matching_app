@@ -141,6 +141,9 @@ class _ChatScreenState extends State<ChatScreen>
                                     return FractionallySizedBox(
                                         widthFactor: 0.45,
                                         child: InkWell(
+                                          onTap: () {
+                                            Navigator.pushNamed(context, "/user_profile_chat");
+                                          },
                                             child: UserInfoItems(
                                                 isChecked: false,
                                                 isNew: items[index].isNew,

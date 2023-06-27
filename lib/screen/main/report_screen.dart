@@ -14,26 +14,6 @@ class ReportScreen extends StatefulWidget {
 }
 
 class _ReportScreenState extends State<ReportScreen> {
-  List<dynamic> items = [];
-  List<BadgeObject> badgeList = [];
-
-  bool isModalShow = false;
-
-  @override
-  void initState() {
-    super.initState();
-    items = [
-      CommunityObject(1, "サッカー", false, 0, "sports"),
-      CommunityObject(2, "野球", false, 0, "sports"),
-      CommunityObject(8, "映画", false, 0, "game"),
-      CommunityObject(11, "キャンプ", false, 0, "outdoor"),
-    ];
-    badgeList = [
-      BadgeObject("とにかく話したい", false, 1),
-      BadgeObject("いつでも", false, 2),
-      BadgeObject("鉄板焼き", false, 3),
-    ];
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +34,8 @@ class _ReportScreenState extends State<ReportScreen> {
                     borderRadius: BorderRadius.circular(100),
                     child: const Image(
                       image: AssetImage("assets/images/users/user.png"),
-                      height: 120,
-                      width: 120,
+                      height: 80,
+                      width: 80,
                     ))),
             const Padding(
                 padding: EdgeInsets.only(top: 20),
@@ -73,14 +53,15 @@ class _ReportScreenState extends State<ReportScreen> {
                     style: TextStyle(fontSize: 14, color: PRIMARY_FONT_COLOR))),
             Expanded(child: Container()),
             Padding(
-                padding: EdgeInsets.symmetric(horizontal: vww(context, 5)),
+                padding: EdgeInsets.only(left: vww(context, 5), right: vww(context, 5), bottom: vhh(context, 10)),
                 child: RadiusButton(
                     isDisabled: false,
                     text: "通報する",
                     color: BUTTON_MAIN,
-                    goNavigation: (id) {},
+                    goNavigation: (id) {
+                      Navigator.pushNamed(context, "/report_success");
+                    },
                     id: 0)),
-            Expanded(child: Container()),
           ],
         ));
   }
