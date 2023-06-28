@@ -10,6 +10,7 @@ import 'package:matching_app/screen/main/chatting_screen.dart';
 import 'package:matching_app/screen/main/community_screen.dart';
 import 'package:matching_app/screen/main/following_users.dart';
 import 'package:matching_app/screen/main/like_user_profile.dart';
+import 'package:matching_app/screen/main/new_post_screen.dart';
 import 'package:matching_app/screen/main/nick_name_edit.dart';
 import 'package:matching_app/screen/main/profile_badge_select.dart';
 import 'package:matching_app/screen/main/profile_edit_screen.dart';
@@ -104,6 +105,7 @@ class MatchingApp extends StatelessWidget {
         '/blocked_users_screen': (context) => BlockedUsersScreen(),
         '/privacy_setting_screen': (context) => PrivacySettingScreen(),
         '/account_close_screen': (context) => const AccountCloseScreen(),
+        '/new_post_screen': (context) => const NewPostScreen(),
       },
     );
   }

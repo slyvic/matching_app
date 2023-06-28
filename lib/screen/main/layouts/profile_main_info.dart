@@ -11,7 +11,11 @@ class ProfileMainInfo extends StatelessWidget {
         Row(children: [
           Padding(
               padding: const EdgeInsets.only(right: 20),
-              child: Container(
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, "/users_profile_screen");
+                },
+                  child: Container(
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
@@ -21,7 +25,7 @@ class ProfileMainInfo extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-              )),
+              ))),
           const Padding(
               padding: EdgeInsets.symmetric(vertical: 5),
               child: Column(children: [
@@ -46,9 +50,9 @@ class ProfileMainInfo extends StatelessWidget {
                       child: Text(" 本人確認済み", style: TextStyle(fontSize: 12))),
                 ])),
             GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, "/profile_edit_screen");
-              },
+                onTap: () {
+                  Navigator.pushNamed(context, "/profile_edit_screen");
+                },
                 child: Container(
                     padding: const EdgeInsets.only(
                         top: 5, bottom: 5, left: 10, right: 15),

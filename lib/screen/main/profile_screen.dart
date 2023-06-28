@@ -123,7 +123,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         : TextButton(
                             onPressed: () {
                               Navigator.pushNamed(
-                                  context, "/self_introduction");
+                                  context, "/identity_verify");
                             },
                             child: Padding(
                                 padding: EdgeInsets.all(vww(context, 4)),
@@ -132,7 +132,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         "assets/images/main/set-introduction.png")))),
                     const SettingsWidget(),
                     MyCommunityWidget(communityObjects: items),
-                    Padding(padding: EdgeInsets.symmetric(horizontal: vww(context, 6)), child: IntroductionWidget()),
+                    IntroductionWidget(),
                     IntroductoryBadgeWidget(badges: badgeList),
                     const BasicInfo(),
                   ]);

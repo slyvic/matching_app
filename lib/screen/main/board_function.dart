@@ -117,17 +117,7 @@ class _BoardFunctionState extends State<BoardFunction> {
               padding:
                   const EdgeInsets.symmetric(horizontal: 20, vertical: 13)),
           onPressed: () {
-            showModalBottomSheet(
-                isScrollControlled: true,
-                context: context,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(25),
-                  ),
-                ),
-                builder: (context) {
-                  return const BoardMessageModal();
-                });
+            Navigator.pushNamed(context, "/new_post_screen");
           },
           child: const Text("投稿する"),
         ),

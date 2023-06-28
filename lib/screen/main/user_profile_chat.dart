@@ -182,40 +182,42 @@ class _UsersProfileChatScreenState extends State<UsersProfileChatScreen> {
                         ),
                         Padding(
                             padding: EdgeInsets.symmetric(
-                                vertical: vhh(context, 7),
+                                vertical: vhh(context, 2),
                                 horizontal: vww(context, 6)),
-                            child: Column(children: [
-                              const Row(children: [
-                                Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 5, bottom: 5, right: 20),
-                                    child: Text("TSUBASA",
-                                        style: TextStyle(fontSize: 17))),
-                                Image(
-                                    image: AssetImage(
-                                        "assets/images/status/on.png"),
-                                    width: 20),
-                                Padding(
-                                    padding: EdgeInsets.only(right: 50),
-                                    child: Text(" 本人確認済み",
-                                        style: TextStyle(fontSize: 12))),
-                              ]),
-                              Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 5),
-                                  child: Row(children: [
-                                    const Text("東京都",
-                                        style: TextStyle(fontSize: 15)),
-                                    Container(width: 20),
-                                    const Text("25歳",
-                                        style: TextStyle(fontSize: 15)),
-                                  ])),
-                            ])),
+                            child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 5),
+                                child: Column(children: [
+                                  const Row(children: [
+                                    Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 5, bottom: 5, right: 20),
+                                        child: Text("TSUBASA",
+                                            style: TextStyle(fontSize: 17))),
+                                    Image(
+                                        image: AssetImage(
+                                            "assets/images/status/on.png"),
+                                        width: 20),
+                                    Padding(
+                                        padding: EdgeInsets.only(right: 50),
+                                        child: Text(" 本人確認済み",
+                                            style: TextStyle(fontSize: 12))),
+                                  ]),
+                                  Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 5),
+                                      child: Row(children: [
+                                        const Text("東京都",
+                                            style: TextStyle(fontSize: 15)),
+                                        Container(width: 20),
+                                        const Text("25歳",
+                                            style: TextStyle(fontSize: 15)),
+                                      ])),
+                                ]))),
                         IntroductionWidget(),
                         MyCommunityWidget(communityObjects: items),
                         IntroductoryBadgeWidget(badges: badgeList),
                         const BasicInfo(),
-                        const SizedBox(height: 50)
                       ]);
                 }, childCount: 1)),
               ],
@@ -258,7 +260,9 @@ class _UsersProfileChatScreenState extends State<UsersProfileChatScreen> {
                       ),
                       child: TextFormField(
                         onTap: () {
-                          showDialog(context: context, builder: (context) => UnidentifiedModal());
+                          showDialog(
+                              context: context,
+                              builder: (context) => UnidentifiedModal());
                         },
                         maxLines: null,
                         keyboardType: TextInputType.multiline,

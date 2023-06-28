@@ -10,7 +10,7 @@ class IntroductionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.only(bottom: vhh(context, 3)),
+        padding: EdgeInsets.only(bottom: vhh(context, 3),left: vww(context, 6), right: vww(context, 6)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

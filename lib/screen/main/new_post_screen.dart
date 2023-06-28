@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:matching_app/common.dart';
+import 'package:matching_app/screen/main/layouts/date_select_no_shadow.dart';
 import 'package:matching_app/screen/main/layouts/profile_header.dart';
 import 'package:matching_app/utile/index.dart';
 
-class SelfIntroducion extends StatefulWidget {
+class NewPostScreen extends StatefulWidget {
+  const NewPostScreen({super.key});
+
   @override
-  // ignore: library_private_types_in_public_api
-  _SelfIntroducion createState() => _SelfIntroducion();
+  NewPostScreenState createState() => NewPostScreenState();
 }
 
-
-class _SelfIntroducion extends State<SelfIntroducion> {
-  String self_introduction = "";
+class NewPostScreenState extends State<NewPostScreen> {
+  String text = "";
 
   final RoundedRectangleBorder roundedRectangleBorder = RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(10),
@@ -29,26 +30,27 @@ class _SelfIntroducion extends State<SelfIntroducion> {
               return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    ProfileHeader(
+                        title: "作成画面",
+                        text: "投稿",
+                        isDisabled: text.isEmpty,
+                        onPressed: () {
+                          if (text.isNotEmpty) {
+                            Navigator.pop(context);
+                          } else {
+                            showOkAlertDialog(context, "ちょっとでも\n文章を入力してみよう");
+                          }
+                        }),
+                    DateSelectNoShadow(),
                     Container(
                       decoration: const BoxDecoration(
                         border: Border(
-                            bottom: BorderSide(
-                                color: Color.fromARGB(255, 112, 112, 112),
-                                width: 1)),
+                          top: BorderSide(
+                            color: Color.fromARGB(255, 112, 112, 112),
+                            width: 0.5,
+                          ),
+                        ),
                       ),
-                      child: ProfileHeader(
-                          title: "自己紹介入力",
-                          text: "",
-                          onPressed: () {
-                            if (self_introduction.isNotEmpty) {
-                              Navigator.pushNamed(
-                                  context, "/profile_screen", arguments: false);
-                            } else {
-                              showOkAlertDialog(context, "ちょっとでも\n文章を入力してみよう");
-                            }
-                          }),
-                    ),
-                    Container(
                       padding: EdgeInsets.symmetric(
                           horizontal: vww(context, 3),
                           vertical: vhh(context, 1)),
@@ -61,7 +63,7 @@ class _SelfIntroducion extends State<SelfIntroducion> {
                           autofocus: true,
                           onChanged: (value) {
                             setState(() {
-                              self_introduction = value;
+                              text = value;
                             });
                           },
                           decoration: InputDecoration(
@@ -87,15 +89,17 @@ class _SelfIntroducion extends State<SelfIntroducion> {
           titlePadding: EdgeInsets.zero,
           shape: roundedRectangleBorder,
           title: Container(
-            padding: const EdgeInsets.symmetric(vertical: 30),
+              padding: const EdgeInsets.symmetric(vertical: 30),
               width: double.infinity,
               decoration: const BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(
-                        color: Color.fromARGB(255, 112, 112, 112),
-                        width: 1))),
+                  border: Border(
+                      bottom: BorderSide(
+                          color: Color.fromARGB(255, 112, 112, 112),
+                          width: 1))),
               child: Text(title,
-                  style: const TextStyle(fontSize: 18, color: PRIMARY_FONT_COLOR), textAlign: TextAlign.center)),
+                  style:
+                      const TextStyle(fontSize: 18, color: PRIMARY_FONT_COLOR),
+                  textAlign: TextAlign.center)),
           actions: <Widget>[
             Container(
               width: double.infinity,

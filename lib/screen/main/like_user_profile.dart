@@ -199,8 +199,7 @@ class _LikeUserProfileState extends State<LikeUserProfile> {
                                       style: TextStyle(fontSize: 15)),
                                 ])),
                           ]))),
-                          Padding(padding: EdgeInsets.symmetric(horizontal: vww(context, 6)), child: 
-                  IntroductionWidget()),
+                  IntroductionWidget(),
                   MyCommunityWidget(communityObjects: items),
                   IntroductoryBadgeWidget(badges: badgeList),
                   const BasicInfo(),

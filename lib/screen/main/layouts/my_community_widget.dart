@@ -29,11 +29,11 @@ class MyCommunityWidget extends StatelessWidget {
                                 fontSize: 16, color: PRIMARY_FONT_COLOR),
                             textAlign: TextAlign.left)),
                     Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: SizedBox(
-                            width: double.infinity - 20,
+                            width: double.infinity - 10,
                             child: Wrap(
-                                spacing: 8,
+                                spacing: 4,
                                 runSpacing: 8,
                                 alignment: WrapAlignment.spaceBetween,
                                 children: List.generate(

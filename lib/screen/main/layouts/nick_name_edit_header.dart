@@ -39,7 +39,7 @@ class NickNameEditHeader extends StatelessWidget {
                 width: 70,
                 height: 35,
                 child: TextButton(onPressed: () {
-                  Navigator.pushNamed(context, '/profile_screen');
+                  Navigator.pop(context);
                 }, child: const Text("保存", style: TextStyle(fontSize: 12, color: Colors.white),)),
               )
             ],

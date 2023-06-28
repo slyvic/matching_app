@@ -6,9 +6,11 @@ typedef OnPressed = void Function();
 
 class ProfileHeader extends StatelessWidget {
   final String title;
+  final String? text;
   final OnPressed onPressed;
+  final bool? isDisabled;
 
-  const ProfileHeader({Key? key, required this.title, required this.onPressed}) : super(key: key);
+  const ProfileHeader({Key? key, required this.title, required this.onPressed, this.text, this.isDisabled}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class ProfileHeader extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Padding(padding: EdgeInsets.only(bottom: 30, left: vww(context, 2)), child: Row(
+            Padding(padding: EdgeInsets.only(bottom: 20, left: vww(context, 2)), child: Row(
             children: [
               Container(
                 alignment: Alignment.centerLeft,
@@ -42,10 +44,11 @@ class ProfileHeader extends StatelessWidget {
               Expanded(child: Container()),
               SizedBox(
                   width: 80,
-                  height: 40,
+                  height: 35,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         disabledForegroundColor: Colors.white,
+                        disabledBackgroundColor: isDisabled == true ? const Color.fromARGB(255, 128, 229, 206) : BUTTON_MAIN,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50.0),
                         ),
@@ -53,10 +56,10 @@ class ProfileHeader extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 0, vertical: 10),
                         backgroundColor: BUTTON_MAIN),
-                    onPressed: () {
+                    onPressed: isDisabled == true ? null : () {
                       onPressed();
                     },
-                    child: const Text('保存', style: TextStyle(fontSize: 12),),
+                    child: Text(text! == "" ? '保存' : text!, style: const TextStyle(fontSize: 12),),
                   )),
               SizedBox(width: vww(context, 6))
                   

@@ -29,7 +29,7 @@ class ProfileInfoItem extends StatelessWidget {
 						),
 					),
 				),
-				padding: const EdgeInsets.only(top: 5, bottom: 5),
+				padding: const EdgeInsets.symmetric(vertical: 5),
 				child: Column(
 					crossAxisAlignment: CrossAxisAlignment.start,
 					children: [
