@@ -211,7 +211,7 @@ class _UsersProfileChatScreenState extends State<UsersProfileChatScreen> {
                                         style: TextStyle(fontSize: 15)),
                                   ])),
                             ])),
-                        const IntroductionWidget(),
+                        IntroductionWidget(),
                         MyCommunityWidget(communityObjects: items),
                         IntroductoryBadgeWidget(badges: badgeList),
                         const BasicInfo(),
@@ -258,7 +258,6 @@ class _UsersProfileChatScreenState extends State<UsersProfileChatScreen> {
                       ),
                       child: TextFormField(
                         onTap: () {
-                          print("============================");
                           showDialog(context: context, builder: (context) => UnidentifiedModal());
                         },
                         maxLines: null,

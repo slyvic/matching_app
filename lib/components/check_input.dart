@@ -45,6 +45,8 @@ class CheckInput extends StatelessWidget {
                 decoration: const InputDecoration(
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: BUTTON_MAIN, width: 2)),
                     enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: BUTTON_MAIN, width: 2))),
               )

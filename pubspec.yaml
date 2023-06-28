@@ -24,6 +24,9 @@ dependencies:
     carousel_indicator: ^1.0.6
     modal_bottom_sheet: ^3.0.0-pre
     adaptive_action_sheet: ^2.0.2
+    wheel_chooser: ^1.1.2
+    app_settings: ^4.2.0
+    permission_handler: ^10.3.0
 dev_dependencies:
     flutter_test:
         sdk: flutter

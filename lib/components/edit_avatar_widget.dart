@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matching_app/common.dart';
 
 class EditAvatarWidget extends StatelessWidget {
   final dynamic item;
@@ -12,7 +13,8 @@ class EditAvatarWidget extends StatelessWidget {
         child: InkWell(
             child: item == ""
                 ? Container(
-                  height: 100,
+                    height: 110,
+                    width: 100,
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: const Color.fromARGB(255, 190, 189, 198),
@@ -22,17 +24,34 @@ class EditAvatarWidget extends StatelessWidget {
                     ),
                     child: const Column(children: [
                       Padding(
-                          padding: EdgeInsets.only(top: 10),
+                          padding: EdgeInsets.only(top: 22),
                           child: Image(
                             image: AssetImage(
-                                "assets/images/identity/photo-camera-svgrepo-com.png"),
-                            width: 30,
+                                "assets/images/main/icons-tabbar-discover.png"),
+                            width: 50,
                           )),
-                      Text("写真2")
+                      Text("写真2",
+                          style: TextStyle(
+                              fontSize: 11, color: PRIMARY_FONT_COLOR))
                     ]),
                   )
-                : ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image(image: AssetImage(item), height: 100,))));
+                : Container(
+                    width: 100,
+                    height: 110,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: const Color.fromARGB(255, 190, 189, 198),
+                        width: 1.0,
+                      ),
+                      color: PRIMARY_FONT_COLOR,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10.0),
+                      child: Image(
+                        image: AssetImage(item),
+                        fit: BoxFit.cover,
+                      ),
+                    ))));
   }
 }

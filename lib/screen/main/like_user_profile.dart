@@ -11,13 +11,13 @@ import 'package:matching_app/screen/main/layouts/thumb_up_modal.dart';
 import 'package:matching_app/utile/index.dart';
 
 // ignore: use_key_in_widget_constructors
-class UsersProfileScreen extends StatefulWidget {
+class LikeUserProfile extends StatefulWidget {
   @override
   // ignore: library_private_types_in_public_api
-  _UsersProfileScreenState createState() => _UsersProfileScreenState();
+  _LikeUserProfileState createState() => _LikeUserProfileState();
 }
 
-class _UsersProfileScreenState extends State<UsersProfileScreen> {
+class _LikeUserProfileState extends State<LikeUserProfile> {
   List<dynamic> items = [];
   List<BadgeObject> badgeList = [];
 
@@ -57,8 +57,8 @@ class _UsersProfileScreenState extends State<UsersProfileScreen> {
                   Stack(
                     alignment: Alignment.topCenter,
                     children: [
-                      SizedBox(
-                        height: vhh(context, 49),
+                      Container(
+                        height: vhh(context, 55),
                         width: vww(context, 100),
                         child: ListView(children: [
                           CarouselSlider(
@@ -102,7 +102,7 @@ class _UsersProfileScreenState extends State<UsersProfileScreen> {
                             ],
                             options: CarouselOptions(
                                 enableInfiniteScroll: true,
-                                height: vhh(context, 46),
+                                height: vhh(context, 52),
                                 scrollDirection: Axis.horizontal,
                                 onPageChanged: (index, reason) {
                                   setState(() {
@@ -123,38 +123,34 @@ class _UsersProfileScreenState extends State<UsersProfileScreen> {
                             height: 10,
                             width: 10,
                           )),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              top: 30,
-                              left: vww(context, 4),
-                              right: vww(context, 4)),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
+                      Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Container(
+                                width: vww(context, 100),
+                                height: vhh(context, 10),
+                                alignment: Alignment.bottomCenter,
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(15),
+                                      bottomRight: Radius.circular(15)),
+                                  color: BUTTON_MAIN,
+                                ),
+                                child: const Padding(
+                                    padding: EdgeInsets.only(bottom: 10),
+                                    child: Text(
+                                      "無料でいいね！",
+                                      style: TextStyle(
+                                          fontSize: 24, color: Colors.white),
+                                    ))),
+                            Padding(
+                                padding:
+                                    EdgeInsets.only(right: vww(context, 3), top: vww(context, 3)),
+                                child: Container(
                                     width: 45,
                                     height: 45,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
-                                      color: const Color.fromARGB(
-                                          50, 255, 255, 255),
-                                    ),
-                                    child: TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      style: ButtonStyle(
-                                        padding: MaterialStateProperty.all(
-                                            EdgeInsets.zero),
-                                      ),
-                                      child: const Icon(Icons.close,
-                                          color: Colors.white),
-                                    )),
-                                Container(
-                                    width: 45,
-                                    height: 45,
-                                    alignment: Alignment.center,
+                                    alignment: Alignment.centerRight,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
                                       color: const Color.fromARGB(100, 0, 0, 0),
@@ -166,8 +162,8 @@ class _UsersProfileScreenState extends State<UsersProfileScreen> {
                                               EdgeInsets.zero),
                                         ),
                                         child: const Icon(Icons.more_horiz,
-                                            color: Colors.white)))
-                              ]))
+                                            color: Colors.white))))
+                          ])
                     ],
                   ),
                   Padding(
@@ -203,7 +199,8 @@ class _UsersProfileScreenState extends State<UsersProfileScreen> {
                                       style: TextStyle(fontSize: 15)),
                                 ])),
                           ]))),
-                  IntroductionWidget(),
+                          Padding(padding: EdgeInsets.symmetric(horizontal: vww(context, 6)), child: 
+                  IntroductionWidget()),
                   MyCommunityWidget(communityObjects: items),
                   IntroductoryBadgeWidget(badges: badgeList),
                   const BasicInfo(),
@@ -212,7 +209,7 @@ class _UsersProfileScreenState extends State<UsersProfileScreen> {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Container(
+      floatingActionButton: SizedBox(
         width: vww(context, 60),
         child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
