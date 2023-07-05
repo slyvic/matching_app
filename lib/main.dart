@@ -1,5 +1,8 @@
+// ignore: depend_on_referenced_packages
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:matching_app/bloc/cubit.dart';
 import 'package:matching_app/screen/home_screen/home_screen_view.dart';
 import 'package:matching_app/screen/login/login_check_code.dart';
 import 'package:matching_app/screen/login/login_view.dart';
@@ -40,24 +43,27 @@ import 'package:matching_app/screen/register/purpose_use.dart';
 import 'package:matching_app/screen/verify_screen/identity_verify.dart';
 import 'package:matching_app/screen/verify_screen/image_check.dart';
 import 'package:matching_app/screen/verify_screen/image_submit.dart';
-import 'redux/init_redux.dart';
 
 void main() {
-  runApp(const MatchingApp(Redux));
+  runApp(const MatchingApp());
 }
 
 class MatchingApp extends StatelessWidget {
-  const MatchingApp(redux, {super.key});
+  const MatchingApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    
+    return BlocProvider(
+          create: (context) => AppCubit(),
+          child:  MaterialApp(
       title: 'Matching App',
       supportedLocales: const [
         Locale('ja', 'JP'),
         Locale('en', 'US'),
       ],
+      debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -107,6 +113,6 @@ class MatchingApp extends StatelessWidget {
         '/account_close_screen': (context) => const AccountCloseScreen(),
         '/new_post_screen': (context) => const NewPostScreen(),
       },
-    );
+    ));
   }
 }

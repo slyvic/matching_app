@@ -1,12 +1,21 @@
 library common;
 
+// ignore: depend_on_referenced_packages
 import 'package:flutter/material.dart';
 
+// ignore: constant_identifier_names
+const String API_URL = "http://192.168.124.66:8000/api/";
+
+// ignore: constant_identifier_names
 const double MIN_HEIGHT = 130;
+// ignore: constant_identifier_names
 const double MAX_HEIGHT = 210;
 
+// ignore: constant_identifier_names
 const PRIMARY_FONT_COLOR = Color.fromARGB(255, 48, 61, 87);
+// ignore: constant_identifier_names
 const PRIMARY_GREY = Color.fromARGB(255, 237, 243, 243);
+// ignore: constant_identifier_names
 const BUTTON_MAIN = Color.fromARGB(255, 0, 202, 157);
 
 class AddressObject {

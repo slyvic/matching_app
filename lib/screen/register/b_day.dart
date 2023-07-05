@@ -1,11 +1,13 @@
+// ignore: depend_on_referenced_packages
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matching_app/bloc/cubit.dart';
 import 'package:matching_app/common.dart';
 import 'package:matching_app/components/check_input.dart';
 import 'package:matching_app/components/radius_button.dart';
 import 'package:matching_app/components/Header.dart';
 import 'package:matching_app/utile/index.dart';
-
 // import 'package:flutter_redux/flutter_redux.dart';
 // ignore: use_key_in_widget_constructors
 class BDay extends StatefulWidget {
@@ -24,6 +26,8 @@ class _BDayState extends State<BDay> {
     showCupertinoModalPopup<void>(
       context: context,
       builder: (BuildContext context) {
+        AppCubit appCubit = AppCubit.get(context);
+        return BlocBuilder<AppCubit, AppState>(builder: (context, state) {
         return Container(
           height: 260,
           color: const Color.fromARGB(255, 240, 240, 241),
@@ -47,12 +51,13 @@ class _BDayState extends State<BDay> {
                       setState(() {
                         b_day = b_day;
                       });
+                      appCubit.bDay = b_day;
                       Navigator.of(context).pop(_selectedDate);
                     },
                   ),
                 ],
               ),
-              Container(
+              SizedBox(
                 height: 200.0,
                 child: CupertinoDatePicker(
                   // backgroundColor: Color.fromARGB(255, 209, 212, 217),
@@ -71,12 +76,15 @@ class _BDayState extends State<BDay> {
             ],
           ),
         );
+        });
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    AppCubit appCubit = AppCubit.get(context);
+    return BlocBuilder<AppCubit, AppState>(builder: (context, state) {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Container(
@@ -121,9 +129,11 @@ class _BDayState extends State<BDay> {
                         },
                         child: CheckInput(
                           isEnabled: false,
-                          onChanged: (String value) {},
+                          onChanged: (String value) {
+                            print(value);
+                          },
                           isChecked: b_day.isNotEmpty,
-                          text: b_day,
+                          text: appCubit.bDay,
                         ))),
                 Expanded(
                   child: Container(),
@@ -143,7 +153,7 @@ class _BDayState extends State<BDay> {
                             goNavigation: (id) {
                               Navigator.pushNamed(context, "/address_check");
                             },
-                            isDisabled: b_day.isEmpty,
+                            isDisabled: appCubit.bDay.isEmpty,
                           ),
                         ))),
                 Expanded(
@@ -151,5 +161,7 @@ class _BDayState extends State<BDay> {
                 )
               ],
             )));
+    }
+    );
   }
 }
