@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matching_app/bloc/cubit.dart';
 import 'package:matching_app/common.dart';
 import 'package:matching_app/components/radius_button.dart';
 import 'package:matching_app/components/Header.dart';
@@ -32,7 +34,14 @@ class _BadgeSelectState extends State<BadgeSelect> {
     BadgeObject("お寿司", false, 3)
   ];
   @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<AppCubit>(context).fetchBadgeList();
+  }
+  @override
   Widget build(BuildContext context) {
+    AppCubit appCubit = AppCubit.get(context);
+    return BlocBuilder<AppCubit, AppState>(builder: (context, state) {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Container(
@@ -72,49 +81,44 @@ class _BadgeSelectState extends State<BadgeSelect> {
                     child: Wrap(
                         spacing: 8,
                         runSpacing: -8,
-                        children: badgeList.map((BadgeObject e) {
-                          String textColor = e.color == 1
-                              ? "#00CA9D"
-                              : e.color == 2
-                                  ? "#FCBC2C"
-                                  : e.color == 3
-                                      ? "#FC7C2C"
-                                      : "#20B07E";
-                          if (e.color == 0) {
+                        children: List.generate(
+                                            appCubit.badgeList.length,
+                                            (index) {
+                          if (appCubit.badgeList[index].id == -1) {
                             return Padding(
                                 padding: const EdgeInsets.only(top: 20),
                                 child: Container());
                           }
                           return FilterChip(
-                              label: Text(e.title,
+                              label: Text(appCubit.badgeList[index].title,
                                   style: TextStyle(
                                       fontSize: 13,
-                                      color: e.isChecked
+                                      color: appCubit.badgeList[index].isChecked
                                           ? Colors.white
                                           : Color(int.parse(
-                                                  textColor.substring(1, 7),
+                                                  appCubit.badgeList[index].color.substring(1, 7),
                                                   radix: 16) +
                                               0xFF000000))),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
                                 side: BorderSide(
                                     color: Color(int.parse(
-                                            textColor.substring(1, 7),
+                                            appCubit.badgeList[index].color.substring(1, 7),
                                             radix: 16) +
                                         0xFF000000),
                                     width: 1.0),
                               ),
                               clipBehavior: Clip.antiAlias,
-                              backgroundColor: e.isChecked
-                                  ? Color(int.parse(textColor.substring(1, 7),
+                              backgroundColor: appCubit.badgeList[index].isChecked
+                                  ? Color(int.parse(appCubit.badgeList[index].color.substring(1, 7),
                                           radix: 16) +
                                       0xFF000000)
-                                  : Color(int.parse(textColor.substring(1, 7),
+                                  : Color(int.parse(appCubit.badgeList[index].color.substring(1, 7),
                                           radix: 16) +
                                       0x33000000),
                               selectedColor: Color(
-                                  int.parse(textColor.substring(1, 7), radix: 16) + 0xFF000000),
-                              onSelected: (isSelected) => selectBadge(e));
+                                  int.parse(appCubit.badgeList[index].color.substring(1, 7), radix: 16) + 0xFF000000),
+                              onSelected: (isSelected) => appCubit.changeBadge(index));
                         }).toList())),
                 Expanded(
                   child: Container(),
@@ -134,7 +138,7 @@ class _BadgeSelectState extends State<BadgeSelect> {
                             goNavigation: (id) {
                               Navigator.pushNamed(context, "/profile_image");
                             },
-                            isDisabled: selectedList.length < 3,
+                            isDisabled: appCubit.selectedBadgeList.length < 3,
                           ),
                         ))),
                 Expanded(
@@ -142,25 +146,6 @@ class _BadgeSelectState extends State<BadgeSelect> {
                 )
               ],
             )));
-  }
-
-  void selectBadge(e) {
-    if (!e.isChecked) {
-      selectedList.add(e);
-      if (selectedList.length > 5) {
-        setState(() {
-          badgeList
-              .where((element) => element == selectedList.elementAt(0))
-              .first
-              .isChecked = false;
-        });
-        selectedList.removeAt(0);
-      }
-    } else {
-      selectedList.remove(e);
-    }
-    setState(() {
-      e.isChecked = !e.isChecked;
     });
   }
 }

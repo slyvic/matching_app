@@ -53,7 +53,7 @@ class NickName extends StatelessWidget {
                           appCubit.changeNickName(value);
                         },
                         isEnabled: true,
-                        isChecked: nickName.isNotEmpty,
+                        isChecked: appCubit.isValidNickName,
                         text: appCubit.nickName,
                       )),
                   Expanded(
@@ -71,8 +71,14 @@ class NickName extends StatelessWidget {
                               id: 0,
                               color: BUTTON_MAIN,
                               text: "つぎへ",
-                              goNavigation: (id) {
-                                Navigator.pushNamed(context, "/b_day");
+                              goNavigation: (id) async {
+                                await appCubit.validationNickName(appCubit.nickName);
+                                if (appCubit.isValidNickName == true) {
+                                  // ignore: use_build_context_synchronously
+                                  Navigator.pushNamed(context, "/b_day");
+                                } else {
+                                  print(appCubit.isValidNickName);
+                                }
                               },
                               isDisabled: appCubit.nickName.isEmpty,
                             ),

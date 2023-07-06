@@ -17,8 +17,7 @@ class BDay extends StatefulWidget {
 }
 
 class _BDayState extends State<BDay> {
-  String b_day = '';
-
+  // ignore: non_constant_identifier_names
   DateTime? _selectedDate;
 
   void _selectDate(BuildContext context) {
@@ -48,10 +47,6 @@ class _BDayState extends State<BDay> {
                   CupertinoButton(
                     child: const Text('完了'),
                     onPressed: () {
-                      setState(() {
-                        b_day = b_day;
-                      });
-                      appCubit.bDay = b_day;
                       Navigator.of(context).pop(_selectedDate);
                     },
                   ),
@@ -68,8 +63,7 @@ class _BDayState extends State<BDay> {
                   maximumDate: DateTime(2030),
                   onDateTimeChanged: (DateTime newDateTime) {
                     _selectedDate = newDateTime;
-                    b_day =
-                        '${newDateTime.year}/${newDateTime.month}/${newDateTime.day}';
+                    appCubit.changeBDay('${newDateTime.year}/${newDateTime.month}/${newDateTime.day}');
                   },
                 ),
               )
@@ -130,9 +124,9 @@ class _BDayState extends State<BDay> {
                         child: CheckInput(
                           isEnabled: false,
                           onChanged: (String value) {
-                            print(value);
+                            appCubit.changeBDay(value);
                           },
-                          isChecked: b_day.isNotEmpty,
+                          isChecked: appCubit.bDay.isNotEmpty,
                           text: appCubit.bDay,
                         ))),
                 Expanded(

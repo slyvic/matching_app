@@ -19,7 +19,7 @@ class _AddressCheckState extends State<AddressCheck> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<AppCubit>(context).fetchiAddressList();
+    BlocProvider.of<AppCubit>(context).fetchAddressList();
   }
 
   @override

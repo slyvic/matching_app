@@ -20,7 +20,7 @@ class _ChooseCommunityState extends State<ChooseCommunity> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<AppCubit>(context).fetchiCommunityList();
+    BlocProvider.of<AppCubit>(context).fetchCommunityList();
   }
 
   @override
@@ -92,41 +92,14 @@ class _ChooseCommunityState extends State<ChooseCommunity> {
                                                     widthFactor: 0.3,
                                                     child: InkWell(
                                                         onTap: () {
-                                                          if (appCubit
-                                                                      .communityList[
-                                                                          index]
-                                                                      .isChecked ==
-                                                                  false &&
-                                                              appCubit.communityList
-                                                                      .where((element) =>
-                                                                          element
-                                                                              .isChecked)
-                                                                      .length <
-                                                                  3) {
+                                                          if (appCubit.communityList[index].isChecked ==false && appCubit.communityList
+                                                                      .where((element) =>element.isChecked).length < 3) {
+                                                                        setState(() {
+                                                                          appCubit.communityList[index].isChecked = !appCubit.communityList[index].isChecked;
+                                                                        });
+                                                          } else if (appCubit.communityList[index].isChecked == true) {
                                                             setState(() {
-                                                              appCubit
-                                                                      .communityList[
-                                                                          index]
-                                                                      .isChecked =
-                                                                  !appCubit
-                                                                      .communityList[
-                                                                          index]
-                                                                      .isChecked;
-                                                            });
-                                                          } else if (appCubit
-                                                                  .communityList[
-                                                                      index]
-                                                                  .isChecked ==
-                                                              true) {
-                                                            setState(() {
-                                                              appCubit
-                                                                      .communityList[
-                                                                          index]
-                                                                      .isChecked =
-                                                                  !appCubit
-                                                                      .communityList[
-                                                                          index]
-                                                                      .isChecked;
+                                                              appCubit.communityList[index].isChecked = !appCubit.communityList[index].isChecked;
                                                             });
                                                           }
                                                         },
@@ -139,7 +112,10 @@ class _ChooseCommunityState extends State<ChooseCommunity> {
                                                                 .communityList[
                                                                     index]
                                                                 .label,
-                                                            image: appCubit.communityList[index].image)));
+                                                            image: appCubit
+                                                                .communityList[
+                                                                    index]
+                                                                .image)));
                                               } else {
                                                 return FractionallySizedBox(
                                                     widthFactor: 1,
@@ -150,35 +126,39 @@ class _ChooseCommunityState extends State<ChooseCommunity> {
                                                                 index]
                                                             .label),
                                                         Image.network(
-                                                            appCubit
-                                                                .communityList[
-                                                                    index]
-                                                                .image,
-                                                            loadingBuilder:
-                                                                (context, child,
-                                                                    loadingProgress) {
-                                                          if (loadingProgress ==
-                                                              null)
-                                                            return child;
-                                                          return Center(
-                                                            child:
-                                                                CircularProgressIndicator(
-                                                              value: loadingProgress
-                                                                          .expectedTotalBytes !=
-                                                                      null
-                                                                  ? loadingProgress
-                                                                          .cumulativeBytesLoaded /
-                                                                      loadingProgress
-                                                                          .expectedTotalBytes!
-                                                                  : null,
-                                                            ),
-                                                          );
-                                                        }, errorBuilder:
-                                                                (context, error,
-                                                                    stackTrace) {
-                                                          return Text(
-                                                              'Error loading image');
-                                                        })
+                                                          appCubit
+                                                              .communityList[
+                                                                  index]
+                                                              .image,
+                                                          loadingBuilder: (context,
+                                                              child,
+                                                              loadingProgress) {
+                                                            if (loadingProgress ==
+                                                                null) {
+                                                              return child;
+                                                            }
+                                                            return Center(
+                                                              child:
+                                                                  CircularProgressIndicator(
+                                                                value: loadingProgress
+                                                                            .expectedTotalBytes !=
+                                                                        null
+                                                                    ? loadingProgress
+                                                                            .cumulativeBytesLoaded /
+                                                                        loadingProgress
+                                                                            .expectedTotalBytes!
+                                                                    : null,
+                                                              ),
+                                                            );
+                                                          },
+                                                          errorBuilder:
+                                                              (context, error,
+                                                                  stackTrace) {
+                                                            return const Text(
+                                                                'Error loading image');
+                                                          },
+                                                          height: 25,
+                                                        )
                                                       ],
                                                     ));
                                               }

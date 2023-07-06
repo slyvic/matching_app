@@ -1,5 +1,6 @@
 import 'dart:io';
 
+// ignore: depend_on_referenced_packages
 import 'package:flutter/material.dart';
 import 'package:matching_app/common.dart';
 import 'package:matching_app/components/radius_button.dart';
@@ -21,7 +22,6 @@ class _ImageSubmitState extends State<ImageSubmit> {
 	Widget build(BuildContext context) {
 		Object? imagePath = ModalRoute.of(context)!.settings.arguments;
 		imagefile = File(imagePath.toString());
-		print(imagePath);
 		return Scaffold(
 				backgroundColor: Colors.white,
 				body: Container(
@@ -32,13 +32,13 @@ class _ImageSubmitState extends State<ImageSubmit> {
 							crossAxisAlignment: CrossAxisAlignment.start,
 							children: [
 								Padding(
-									padding: EdgeInsets.symmetric(vertical: vw(context, 1)),
+									padding: EdgeInsets.only(top: 15, bottom: 60),
 									child: const HeaderWidget(title: "本人確認"),
 								),
 								Center(
 										child: Padding(
 												padding: EdgeInsets.symmetric(
-														horizontal: vw(context, 10)),
+														horizontal: vw(context, 10),),
 														child: SizedBox(
 																height: vh(context, 20),
 																width: double.infinity,

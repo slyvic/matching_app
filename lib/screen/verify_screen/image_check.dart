@@ -1,5 +1,6 @@
 import 'dart:io';
 
+// ignore: depend_on_referenced_packages
 import 'package:flutter/material.dart';
 import 'package:matching_app/common.dart';
 import 'package:matching_app/components/radius_button.dart';
@@ -32,7 +33,7 @@ class _ImageCheckState extends State<ImageCheck> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: vw(context, 1)),
+                  padding: EdgeInsets.only(top: vh(context, 2.5)),
                   child: const HeaderWidget(title: "本人確認"),
                 ),
                 Center(

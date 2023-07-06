@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matching_app/bloc/cubit.dart';
 import 'package:matching_app/common.dart';
 import 'package:matching_app/components/check_button.dart';
 import 'package:matching_app/components/radius_button.dart';
@@ -16,7 +18,14 @@ class PurposeUse extends StatefulWidget {
 class _PurposeUseState extends State<PurposeUse> {
   List<bool> purpose = [false, false, false];
   @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<AppCubit>(context).fetchPurposeList();
+  }
+  @override
   Widget build(BuildContext context) {
+    AppCubit appCubit = AppCubit.get(context);
+    return BlocBuilder<AppCubit, AppState>(builder: (context, state) {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Container(
@@ -56,50 +65,21 @@ class _PurposeUseState extends State<PurposeUse> {
                         left: getDeviceWidth(context) / 47 * 4,
                         right: getDeviceWidth(context) / 47 * 4),
                     child: Column(
-                      children: [
-                        InkWell(
+                      children: List.generate(
+                              appCubit.purposeList.length,
+                              (index) {
+                                return InkWell(
                             highlightColor: Colors.transparent,
                             splashColor: Colors.transparent,
                             onTap: () {
-                              setState(() {
-                                purpose = [false, false, false];
-                                purpose[0] = true;
-                              });
+                              appCubit.changePurpose(appCubit.purposeList[index].id);
                             },
                             child: CheckButton(
                                 fontColor: PRIMARY_FONT_COLOR,
-                                text2: "真剣",
+                                text2: appCubit.purposeList[index].title,
                                 fontSize: 17,
-                                isChecked: purpose[0])),
-                        InkWell(
-                            highlightColor: Colors.transparent,
-                            splashColor: Colors.transparent,
-                            onTap: () {
-                              setState(() {
-                                purpose = [false, false, false];
-                                purpose[1] = true;
-                              });
-                            },
-                            child: CheckButton(
-                                fontColor: PRIMARY_FONT_COLOR,
-                                text2: "気軽",
-                                fontSize: 17,
-                                isChecked: purpose[1])),
-                        InkWell(
-                            highlightColor: Colors.transparent,
-                            splashColor: Colors.transparent,
-                            onTap: () {
-                              setState(() {
-                                purpose = [false, false, false];
-                                purpose[2] = true;
-                              });
-                            },
-                            child: CheckButton(
-                                fontColor: PRIMARY_FONT_COLOR,
-                                text2: "相手次第",
-                                fontSize: 17,
-                                isChecked: purpose[2]))
-                      ],
+                                isChecked: appCubit.purposeList[index].id == appCubit.purpose));
+                              })
                     )),
                 Expanded(
                   child: Container(),
@@ -119,8 +99,7 @@ class _PurposeUseState extends State<PurposeUse> {
                             goNavigation: (id) {
                               Navigator.pushNamed(context, "/badge_select");
                             },
-                            isDisabled:
-                                purpose.where((element) => element).isEmpty,
+                            isDisabled: appCubit.purpose == -1,
                           ),
                         ))),
                 Expanded(
@@ -128,5 +107,6 @@ class _PurposeUseState extends State<PurposeUse> {
                 )
               ],
             )));
+    });
   }
 }

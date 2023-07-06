@@ -1,15 +1,8 @@
 part of 'cubit.dart';
 
 abstract class AppState {}
-
 class AppInitial extends AppState {}
 
-class AppNickName extends AppState {}
+// ! ---------> register
 
-class AppBDay extends AppState {}
-
-class AppAddress extends AppState {}
-
-class AppAddressList extends AppState {}
-
-class CommunityList extends AppState {}
+class AppRegister extends AppState {}

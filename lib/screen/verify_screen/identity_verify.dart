@@ -55,7 +55,7 @@ class _IdentityVerifyState extends State<IdentityVerify> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: vw(context, 1)),
+                  padding: EdgeInsets.only(top: vh(context, 2.5)),
                   child: const HeaderWidget(title: "本人確認"),
                 ),
                 Padding(

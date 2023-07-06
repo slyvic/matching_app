@@ -59,3 +59,18 @@ class BadgeObject {
 
   BadgeObject(this.title, this.isChecked, this.color);
 }
+
+class BadgeItemObject {
+  int id;
+  String title;
+  bool isChecked;
+  String color;
+  BadgeItemObject(this.id, this.title, this.isChecked, this.color);
+}
+
+class BodyTypeObject {
+  int id;
+  String title;
+
+  BodyTypeObject(this.id, this.title);
+}
