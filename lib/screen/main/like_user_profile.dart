@@ -29,10 +29,10 @@ class _LikeUserProfileState extends State<LikeUserProfile> {
   void initState() {
     super.initState();
     items = [
-      CommunityObject(1, "サッカー", false, 0, "sports"),
-      CommunityObject(2, "野球", false, 0, "sports"),
-      CommunityObject(8, "映画", false, 0, "game"),
-      CommunityObject(11, "キャンプ", false, 0, "outdoor"),
+      CommunityObject(1, "サッカー", false, 0, 1, ""),
+      CommunityObject(2, "野球", false, 0, 1, ""),
+      CommunityObject(8, "映画", false, 0, 2, ""),
+      CommunityObject(11, "キャンプ", false, 0, 3, ""),
     ];
     badgeList = [
       BadgeObject("とにかく話したい", false, 1),

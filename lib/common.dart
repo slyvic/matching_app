@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 
 // ignore: constant_identifier_names
 const String API_URL = "http://192.168.124.66:8000/api/";
+// ignore: constant_identifier_names
+const String BASE_URL = "http://192.168.124.66:8000";
 
 // ignore: constant_identifier_names
 const double MIN_HEIGHT = 130;
@@ -29,12 +31,13 @@ class AddressObject {
 class CommunityObject {
   String label;
   bool isChecked;
-  int parent;
-  String category;
+  int category;
   int idx;
+  int parent;
+  String image;
 
-  CommunityObject(
-      this.idx, this.label, this.isChecked, this.parent, this.category);
+  CommunityObject(this.idx, this.label, this.isChecked, this.parent,
+      this.category, this.image);
 }
 
 class UsersObject {

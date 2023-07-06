@@ -11,3 +11,5 @@ class AppBDay extends AppState {}
 class AppAddress extends AppState {}
 
 class AppAddressList extends AppState {}
+
+class CommunityList extends AppState {}

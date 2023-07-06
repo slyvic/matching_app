@@ -25,21 +25,21 @@ class _CommunityScreenState extends State<CommunityScreen> {
   void initState() {
     super.initState();
     items = <CommunityObject>[
-      CommunityObject(0, "スポーツ", false, -1, "sports"),
-      CommunityObject(1, "サッカー", false, 0, "sports"),
-      CommunityObject(2, "野球", false, 0, "sports"),
-      CommunityObject(3, "バスケ", false, 0, "sports"),
-      CommunityObject(4, "テニス", false, 0, "sports"),
-      CommunityObject(5, "卓球", false, 0, "sports"),
-      CommunityObject(6, "ゴルフ", false, 0, "sports"),
-      CommunityObject(0, "趣味", false, -1, "hobby"),
-      CommunityObject(7, "音楽", false, 0, "hobby"),
-      CommunityObject(8, "映画", false, 0, "hobby"),
-      CommunityObject(9, "漫画", false, 0, "hobby"),
-      CommunityObject(0, "アウトドア", false, -1, "outdoor"),
-      CommunityObject(10, "旅行", false, 0, "outdoor"),
-      CommunityObject(11, "キャンプ", false, 0, "outdoor"),
-      CommunityObject(12, "登山", false, 0, "outdoor")
+      CommunityObject(0, "スポーツ", false, -1, 1, ""),
+      CommunityObject(1, "サッカー", false, 0, 1, ""),
+      CommunityObject(2, "野球", false, 0, 1, ""),
+      CommunityObject(3, "バスケ", false, 0, 1, ""),
+      CommunityObject(4, "テニス", false, 0, 1, ""),
+      CommunityObject(5, "卓球", false, 0, 1, ""),
+      CommunityObject(6, "ゴルフ", false, 0, 1, ""),
+      CommunityObject(0, "趣味", false, -1, 2, ""),
+      CommunityObject(7, "音楽", false, 0, 2, ""),
+      CommunityObject(8, "映画", false, 0, 2, ""),
+      CommunityObject(9, "漫画", false, 0, 2, ""),
+      CommunityObject(0, "アウトドア", false, -1, 3, ""),
+      CommunityObject(10, "旅行", false, 0, 3, ""),
+      CommunityObject(11, "キャンプ", false, 0, 3, ""),
+      CommunityObject(12, "登山", false, 0, 3, "")
     ];
     badgeList = [
       BadgeObject("とにかく話したい", false, 1),
