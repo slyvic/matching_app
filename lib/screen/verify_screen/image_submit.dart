@@ -31,9 +31,9 @@ class _ImageSubmitState extends State<ImageSubmit> {
 						child: Column(
 							crossAxisAlignment: CrossAxisAlignment.start,
 							children: [
-								Padding(
+								const Padding(
 									padding: EdgeInsets.only(top: 15, bottom: 60),
-									child: const HeaderWidget(title: "本人確認"),
+									child: HeaderWidget(title: "本人確認"),
 								),
 								Center(
 										child: Padding(

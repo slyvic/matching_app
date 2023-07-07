@@ -236,5 +236,13 @@ class AppCubit extends Cubit<AppState> {
 
 	// !--------> register end
 
+	// !--------> identity verify start
+
+	Future<void> uploadIdentifyImage() async {
+
+	}
+
+	// !--------> identity verify end
+
 	static AppCubit get(context) => BlocProvider.of(context);
 }
